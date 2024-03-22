@@ -11,6 +11,6 @@ public class Output {
     }
 
     public static void printExceptionMessage(String exceptionMessage) {
-        System.out.println(exceptionMessage);
+        System.out.println("[ERROR] " + exceptionMessage);
     }
 }

@@ -1,28 +1,20 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Computer {
-    private static ArrayList<Integer> computerNumbers;
-    public Computer() {
-        computerNumbers = generateRandomNumbers();
-    }
-    public ArrayList<Integer> generateRandomNumbers() {
+    public Baseball generateRandomNumbers() {
         Random random = new Random();
-        ArrayList<Integer> randomNumbers = new ArrayList<>();
+        String randomNumbers = "";
 
-        while (randomNumbers.size() < 3) {
+        while (randomNumbers.length() < 3) {
             int randomNumber = random.nextInt(9) + 1;
-            if (!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
+            if (!randomNumbers.contains(Integer.toString(randomNumber))) {
+                randomNumbers += randomNumber;
             }
         }
 
-        return randomNumbers;
+        return new Baseball(randomNumbers);
     }
 
-    public static ArrayList<Integer> getComputerNumbers() {
-        return computerNumbers;
-    }
 }
