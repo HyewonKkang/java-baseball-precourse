@@ -8,7 +8,7 @@ public class Computer {
     public Computer() {
         computerNumbers = generateRandomNumbers();
     }
-    public static ArrayList<Integer> generateRandomNumbers() {
+    public ArrayList<Integer> generateRandomNumbers() {
         Random random = new Random();
         ArrayList<Integer> randomNumbers = new ArrayList<>();
 
