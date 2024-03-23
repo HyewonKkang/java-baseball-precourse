@@ -49,4 +49,8 @@ public class Baseball {
     public int getNumber(int index) {
         return baseball.get(index);
     }
+
+    public boolean contains(int number) {
+        return baseball.contains(number);
+    }
 }

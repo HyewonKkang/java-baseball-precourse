@@ -48,10 +48,8 @@ public class JudgeService {
     private int getBallCount(Baseball computerNumbers, Baseball userNumbers) {
         int ball = 0;
         for (int i = 0; i < VALID_BASEBALL_LENGTH; i++) {
-            for (int j = 0; j < VALID_BASEBALL_LENGTH; j++) {
-                if (i != j && computerNumbers.getNumber(i) == userNumbers.getNumber(j)) {
-                    ball++;
-                }
+            if (computerNumbers.contains(userNumbers.getNumber(i)) && computerNumbers.getNumber(i) != userNumbers.getNumber(i)) {
+                ball++;
             }
         }
         return ball;
