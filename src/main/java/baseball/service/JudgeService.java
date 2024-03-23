@@ -13,8 +13,14 @@ public class JudgeService {
     public Result judge(Baseball computerNumbers, Baseball userNumbers) {
         int strike = getStrikeCount(computerNumbers, userNumbers);
         int ball = getBallCount(computerNumbers, userNumbers);
-        String resultMessage = "";
 
+        String resultMessage = buildResultMessage(strike, ball);
+
+        return new Result(strike, ball, resultMessage);
+    }
+
+    private String buildResultMessage(int strike, int ball) {
+        String resultMessage = "";
         if (strike > 0) {
             resultMessage = strike + STRIKE;
         }
@@ -25,8 +31,7 @@ public class JudgeService {
             }
             resultMessage += ball + BALL;
         }
-
-        return new Result(strike, ball, resultMessage.isEmpty() ? NOTHING : resultMessage);
+        return resultMessage.isEmpty() ? "낫싱" : resultMessage;
     }
 
 
