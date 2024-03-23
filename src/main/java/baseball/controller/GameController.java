@@ -8,27 +8,36 @@ import baseball.ui.Input;
 import baseball.ui.Output;
 
 public class GameController {
-    private JudgeService judgeService = new JudgeService();
-    private Input input = new Input();
-    private Computer computer = new Computer();
+    private final JudgeService judgeService = new JudgeService();
+    private final Input input = new Input();
+    private final Computer computer = new Computer();
     private Baseball computerNumbers;
-    private Result result;
 
-   public void start() {
+    public void start() {
        do {
            computerNumbers = computer.generateRandomNumbers();
            run();
        } while (playAgain() == 1);
+       input.close();
    }
 
    private void run() {
+       Result result;
        do {
            Baseball userNumbers = generateUserNumbers();
            result = judgeService.judge(computerNumbers, userNumbers);
+           printResult(result);
        } while (!result.isOver);
 
        Output.printMessage(Output.GAME_ASK_MESSAGE);
    }
+
+    private void printResult(Result result) {
+        Output.printMessage(result.getResultMessage());
+        if (result.isOver) {
+            Output.printMessage(Output.GAME_END_MESSAGE);
+        }
+    }
 
     private int playAgain() {
         int userInput = 0;

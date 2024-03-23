@@ -5,16 +5,16 @@ import java.util.Random;
 public class Computer {
     public Baseball generateRandomNumbers() {
         Random random = new Random();
-        String randomNumbers = "";
+        StringBuilder randomNumbers = new StringBuilder();
 
         while (randomNumbers.length() < 3) {
             int randomNumber = random.nextInt(9) + 1;
-            if (!randomNumbers.contains(Integer.toString(randomNumber))) {
-                randomNumbers += randomNumber;
+            if (!randomNumbers.toString().contains(Integer.toString(randomNumber))) {
+                randomNumbers.append(randomNumber);
             }
         }
 
-        return new Baseball(randomNumbers);
+        return new Baseball(randomNumbers.toString());
     }
 
 }

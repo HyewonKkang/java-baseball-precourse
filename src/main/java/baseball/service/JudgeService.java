@@ -2,7 +2,6 @@ package baseball.service;
 
 import baseball.domain.Baseball;
 import baseball.domain.Result;
-import baseball.ui.Output;
 
 import static baseball.domain.Baseball.VALID_BASEBALL_LENGTH;
 
@@ -27,17 +26,9 @@ public class JudgeService {
             resultMessage += ball + BALL;
         }
 
-        Result result = new Result(strike, ball, resultMessage.isEmpty() ? NOTHING : resultMessage);
-        printResult(result);
-        return result;
+        return new Result(strike, ball, resultMessage.isEmpty() ? NOTHING : resultMessage);
     }
 
-    private void printResult(Result result) {
-        Output.printMessage(result.getResultMessage());
-        if (result.isOver) {
-            Output.printMessage(Output.GAME_END_MESSAGE);
-        }
-    }
 
     private int getStrikeCount(Baseball computerNumbers, Baseball userNumbers) {
         int strike = 0;
