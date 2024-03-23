@@ -16,16 +16,18 @@ public class JudgeService {
         int ball = getBallCount(computerNumbers, userNumbers);
         String resultMessage = "";
 
-        if (strike == 0 && ball == 0) {
-            resultMessage = NOTHING;
-        } else if (strike > 0 && ball > 0) {
-            resultMessage = strike + STRIKE + " " + ball + BALL;
-        } else if (strike > 0) {
+        if (strike > 0) {
             resultMessage = strike + STRIKE;
-        } else {
-            resultMessage = ball + BALL;
         }
-        Result result = new Result(strike, ball, resultMessage);
+
+        if (ball > 0) {
+            if (strike > 0) {
+                resultMessage += " ";
+            }
+            resultMessage += ball + BALL;
+        }
+
+        Result result = new Result(strike, ball, resultMessage.isEmpty() ? NOTHING : resultMessage);
         printResult(result);
         return result;
     }
@@ -33,7 +35,7 @@ public class JudgeService {
     private void printResult(Result result) {
         Output.printMessage(result.getResultMessage());
         if (result.isOver) {
-            Output.printGameEndMessage();
+            Output.printMessage(Output.GAME_END_MESSAGE);
         }
     }
 
