@@ -8,8 +8,9 @@ import baseball.ui.Input;
 import baseball.ui.Output;
 
 public class GameController {
+    private JudgeService judgeService = new JudgeService();
     private Baseball computerNumbers;
-    private Baseball userNumbers;
+    private Result result;
 
    public void start() {
        Computer computer = new Computer();
@@ -18,17 +19,10 @@ public class GameController {
    }
 
    private void run() {
-       while (true) {
-           userNumbers = generateUserNumbers();
-           printResult();
-           break;
-       }
-   }
-
-   private void printResult() {
-       JudgeService judgeService = new JudgeService();
-       Result result = judgeService.judge(computerNumbers, userNumbers);
-       Output.printMessage(result.getResultMessage());
+       do {
+           Baseball userNumbers = generateUserNumbers();
+           result = judgeService.judge(computerNumbers, userNumbers);
+       } while (!result.isOver);
    }
 
    private Baseball generateUserNumbers() {
