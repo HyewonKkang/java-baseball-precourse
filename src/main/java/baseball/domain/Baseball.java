@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class Baseball {
     private final ArrayList<Integer> baseball;
-    private static final int VALID_BASEBALL_LENGTH = 3;
+    public static final int VALID_BASEBALL_LENGTH = 3;
 
     public Baseball(String baseball) {
         isValidBaseball(baseball);
@@ -49,4 +49,7 @@ public class Baseball {
         return baseball;
     }
 
+    public int getNumber(int index) {
+        return baseball.get(index);
+    }
 }
