@@ -50,6 +50,10 @@ public class Baseball {
         return baseball.get(index);
     }
 
+    public ArrayList<Integer> getBaseball() {
+        return baseball;
+    }
+
     public boolean contains(int number) {
         return baseball.contains(number);
     }

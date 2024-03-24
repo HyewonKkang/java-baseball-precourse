@@ -31,7 +31,7 @@ public class JudgeService {
             }
             resultMessage += ball + BALL;
         }
-        return resultMessage.isEmpty() ? "낫싱" : resultMessage;
+        return resultMessage.isEmpty() ? NOTHING : resultMessage;
     }
 
 
